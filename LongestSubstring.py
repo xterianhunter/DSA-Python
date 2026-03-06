@@ -1,20 +1,14 @@
 # s = "zxyzxyz"
 s="abcabcbb"
 
-maxcount,count = 0,1
-i,j = 0,1
+charSet = set()
+l = 0
+res = 0
 
-
-while i < len(s)-1 and j < len(s):
-    if s[i] == s[j]:
-        i = i+1
-        count = 1
-        j = i+1
-    else:
-        count += 1
-        j = j+1
-    
-    maxcount = max(maxcount,count)      
-
-print(maxcount)
-            
+for r in range(len(s)):
+    while s[r] in charSet:
+        charSet.remove(s[l])
+        l += 1
+    charSet.add(s[r])
+    res = max(res, r - l + 1)
+print(res)
